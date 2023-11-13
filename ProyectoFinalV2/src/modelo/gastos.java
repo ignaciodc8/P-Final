@@ -1,23 +1,33 @@
 
-/*package modelo;
+package modelo;
 
 
-public class gastos extends departamentos {
+public class gastos {
     
-    private double gastos;
+    private Integer gastosID;
+    private Double gastos;
     private String comentarios;
 
-    public gastos(double gastos, String comentarios, int deptoid, int propID, int inqID, int piso, char letra, int gastosID, int edifID, String nombre, String calle, int numero, String barrio) {
-        super(deptoid, propID, inqID, piso, letra, gastosID, edifID, nombre, calle, numero, barrio);
+    public gastos(Integer gastosID, Double gastos, String comentarios) {
+        
+        this.gastosID = gastosID;
         this.gastos = gastos;
         this.comentarios = comentarios;
     }
 
-    public double getGastos() {
+    public Integer getGastosID() {
+        return gastosID;
+    }
+
+    public void setGastosID(Integer gastosID) {
+        this.gastosID = gastosID;
+    }
+
+    public Double getGastos() {
         return gastos;
     }
 
-    public void setGastos(double gastos) {
+    public void setGastos(Double gastos) {
         this.gastos = gastos;
     }
 
@@ -31,9 +41,8 @@ public class gastos extends departamentos {
 
     @Override
     public String toString() {
-        return super.toString() + " - gastos{" + "gastos=" + gastos + ", comentarios=" + comentarios + '}';
+        return " - gastos{" + "gastosID=" + gastosID + ", gastos=" + gastos + ", comentarios=" + comentarios + '}';
     }
     
     
 }
-*/

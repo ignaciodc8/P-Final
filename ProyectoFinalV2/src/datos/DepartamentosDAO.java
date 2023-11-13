@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.departamentos;
+import modelo.gastos;
 
 
 public class DepartamentosDAO implements IDAO{
@@ -27,11 +28,9 @@ public class DepartamentosDAO implements IDAO{
             ps = con.prepareStatement(SSQL);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
-                 departamentosObj = new departamentos(rs.getInt("id_edif"), rs.getString("nombre"),
-                         rs.getString("calle"), rs.getInt("numero"), rs.getString("barrio"), rs.getInt("id_depto"), rs.getString("propietario"),
-                 rs.getString("inquilino"), rs.getInt("piso"), rs.getString("letra"), rs.getInt("gastos")); 
-                 lista.add(departamentosObj);
-            }
+                 departamentosObj = new departamentos(rs.getInt("id_depto"), rs.getString("propietario"), rs.getString("inquilino"), rs.getInt("piso"), rs.getString("letra"));
+            
+            lista.add(departamentosObj);}
             return lista;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -43,20 +42,16 @@ public class DepartamentosDAO implements IDAO{
     public void insertar(Object obj) {
         try {
             departamentosObj = (departamentos) obj;
-            String SSQL = "INSERT INTO departamentos (id_edif, nombre, calle, numero, barrio, propietario, inquilino, piso, letra, gastos ) VALUES"
-                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String SSQL = "INSERT INTO departamentos (propietario, inquilino, piso, letra) VALUES"
+                    + "(?, ?, ?, ?)";
             ps = con.prepareStatement(SSQL);
-            ps.setInt(1, departamentosObj.getEdifID());
-            ps.setString(2, departamentosObj.getNombre());
-            ps.setString(3, departamentosObj.getCalle());
-            ps.setInt(4, departamentosObj.getNumero());
-            ps.setString(5, departamentosObj.getBarrio());
-            //ps.setInt(6, departamentosObj.getDeptoID());
-            ps.setString(6, departamentosObj.getPropietario());
-            ps.setString(7, departamentosObj.getInquilino());
-            ps.setInt(8, departamentosObj.getPiso());
-            ps.setString(9, departamentosObj.getLetra());
-            ps.setInt(10, departamentosObj.getGastos());
+            ps.setString(1, departamentosObj.getPropietario());
+            ps.setString(2, departamentosObj.getInquilino());
+            ps.setInt(3, departamentosObj.getPiso());
+            ps.setString(4, departamentosObj.getLetra());
+            
+            
+            
             
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -68,18 +63,14 @@ public class DepartamentosDAO implements IDAO{
     public void modificar(Object obj) {
         try {
             departamentosObj = (departamentos) obj;
-            String SSQL = "UPDATE departamentos SET id_edif=?, nombre=?, calle=?, numero=?, barrio=?, propietario=?, inquilino=?, piso=?, letra=?, gastos=? WHERE ID_Depto=?";
+            String SSQL = "UPDATE departamentos SET propietario=?, inquilino=?, piso=?, letra=? WHERE id_depto=?";
             ps = con.prepareStatement(SSQL);
-            ps.setInt(1, departamentosObj.getEdifID());
-            ps.setString(2, departamentosObj.getNombre());
-            ps.setString(3, departamentosObj.getCalle());
-            ps.setInt(4, departamentosObj.getNumero());
-            ps.setString(5, departamentosObj.getBarrio());
-            ps.setString(7, departamentosObj.getPropietario());
-            ps.setString(8, departamentosObj.getInquilino());
-            ps.setInt(9, departamentosObj.getPiso());
-            ps.setString(10, departamentosObj.getLetra());
-            ps.setInt(11, departamentosObj.getGastos());
+            ps.setString(1, departamentosObj.getPropietario());
+            ps.setString(2, departamentosObj.getInquilino());
+            ps.setInt(3, departamentosObj.getPiso());
+            ps.setString(4, departamentosObj.getLetra());
+            ps.setInt(5, departamentosObj.getDeptoID());            
+            
             ps.executeUpdate();
             
         } catch (SQLException ex) {
@@ -93,9 +84,9 @@ public class DepartamentosDAO implements IDAO{
     public void eliminar(Object obj) {
         try {
             departamentosObj = (departamentos) obj;
-            String SSQL = "DELETE FROM departamentos WHERE ID_Depto=?";
+            String SSQL = "DELETE FROM departamentos WHERE id_Depto=?";
             ps = con.prepareStatement(SSQL);
-            ps.setInt(6, departamentosObj.getDeptoID());
+            ps.setInt(1, departamentosObj.getDeptoID());
             ps.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());

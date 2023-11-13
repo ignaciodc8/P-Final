@@ -1,31 +1,31 @@
 
 package controlador;
 
-import datos.DepartamentosDAO;
 import datos.IDAO;
+import datos.gastosDAO;
 import java.util.ArrayList;
 
-public class DeptoControl implements IDAO{
+
+public class GastosControl implements IDAO {
 
     @Override
     public ArrayList listar(String condicion) {
-        return new DepartamentosDAO().listar(condicion);
-        
+        return new gastosDAO().listar(condicion);
         }
-    
+
     @Override
     public void insertar(Object obj) {
-        new DepartamentosDAO().insertar(obj);
-       }
+        new gastosDAO().insertar(obj);
+    }
 
     @Override
     public void modificar(Object obj) {
-        new DepartamentosDAO().modificar(obj);
-        }
+        new gastosDAO().modificar(obj);
+         }
 
     @Override
     public void eliminar(Object obj) {
-        new DepartamentosDAO().eliminar(obj);
-        }
+        new gastosDAO().eliminar(obj);
+       }
     
 }
