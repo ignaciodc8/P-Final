@@ -7,6 +7,7 @@ public class gastos {
     private Integer gastosID;
     private Double gastos;
     private String comentarios;
+    
 
     public gastos(Integer gastosID, Double gastos, String comentarios) {
         

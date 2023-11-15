@@ -9,14 +9,16 @@ public class departamentos  {
     private String inquilino;
     private Integer piso;
     private String letra;
+    private Double expensas;
     
     
-    public departamentos(Integer deptoID, String propietario, String inquilino, Integer piso, String letra) {
+    public departamentos(Integer deptoID, String propietario, String inquilino, Integer piso, String letra, Double expensas) {
         this.deptoID = deptoID;
         this.propietario = propietario;
         this.inquilino = inquilino;
         this.piso = piso;
         this.letra = letra;
+        this.expensas = expensas;
         
     }
     public Integer getDeptoID() {
@@ -59,83 +61,24 @@ public class departamentos  {
         this.letra = letra;
     }
 
+    public Double getExpensas() {
+        return expensas;
+    }
+
+    public void setExpensas(Double expensas) {
+        this.expensas = expensas;
+    }
+
    
+    
     @Override
     public String toString() {
-        return "departamentos{" + "deptoID=" + deptoID + ", propietario=" + propietario + ", inquilino=" + inquilino + ", piso=" + piso + ", letra=" + letra + '}';
+        return "departamentos{" + "deptoID=" + deptoID + ", propietario=" + propietario + ", inquilino=" + inquilino + ", piso=" + piso + ", letra=" + letra + ", expensas=" + expensas + '}';
     }
-   
-
-    
-    
-   /* public departamentos(int edifID, String nombre, String calle, int numero, String barrio, Integer deptoID, String propietario, String inquilino, int piso, String letra, int gastos) {
-        super(edifID, nombre, calle, numero, barrio);
-        this.deptoID = deptoID;
-        this.propietario = propietario;
-        this.inquilino = inquilino;
-        this.piso = piso;
-        this.letra = letra;
-        this.gastos = gastos;
-    }
-
-    public Integer getDeptoID() {
-        return deptoID;
-    }
-
-    public void setDeptoID(Integer deptoID) {
-        this.deptoID = deptoID;
-    }
-
-    public String getPropietario() {
-        return propietario;
-    }
-
-    public void setPropietario(String propietario) {
-        this.propietario = propietario;
-    }
-
-    public String getInquilino() {
-        return inquilino;
-    }
-
-    public void setInquilino(String inquilino) {
-        this.inquilino = inquilino;
-    }
-
-    public int getPiso() {
-        return piso;
-    }
-
-    public void setPiso(int piso) {
-        this.piso = piso;
-    }
-
-    public String getLetra() {
-        return letra;
-    }
-
-    public void setLetra(String letra) {
-        this.letra = letra;
-    }
-
-    public int getGastos() {
-        return gastos;
-    }
-
-    public void setGastos(int gastos) {
-        this.gastos = gastos;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() +  " - departamentos{" + "deptoID=" + deptoID + ", propietario=" + propietario + ", inquilino=" + inquilino + ", piso=" + piso + ", letra=" + letra + ", gastos=" + gastos + '}';
-    } */
-
-    
-
-    
-    
-
-    
-    
 }
+
+    
+    
+  
+
+   

@@ -29,12 +29,12 @@ public class DeptosFRM extends javax.swing.JFrame {
         modelo.addColumn("Inquilino");
         modelo.addColumn("Piso");
         modelo.addColumn("Letra");
-        
+        modelo.addColumn("Expensas");
         
         
 
         departamentosLista = DCtrl.listar("");
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
 
         for (int i = 0; i < departamentosLista.size(); i++) {
             departamentosObj = departamentosLista.get(i);
@@ -43,6 +43,7 @@ public class DeptosFRM extends javax.swing.JFrame {
             fila[2] = departamentosObj.getInquilino();
             fila[3] = departamentosObj.getPiso();
             fila[4] = departamentosObj.getLetra();
+            fila[5] = departamentosObj.getExpensas();
             
            
             
@@ -54,6 +55,7 @@ public class DeptosFRM extends javax.swing.JFrame {
             txtInq.setText("");
             txtPiso.setText("");
             txtLetra.setText("");
+            
             btnAccion.setText("Ingresar");
         } 
         
@@ -106,6 +108,8 @@ public class DeptosFRM extends javax.swing.JFrame {
         btnAccion = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtExpensas = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblListado1 = new javax.swing.JTable();
@@ -171,6 +175,8 @@ public class DeptosFRM extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Expensas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -198,9 +204,15 @@ public class DeptosFRM extends javax.swing.JFrame {
                                 .addComponent(txtPiso, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(75, 75, 75)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtExpensas, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(24, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(68, 68, 68)
@@ -220,13 +232,16 @@ public class DeptosFRM extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5))
-                    .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtInq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtExpensas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addComponent(btnAccion)
                 .addContainerGap())
@@ -305,8 +320,6 @@ public class DeptosFRM extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.getAccessibleContext().setAccessibleName("Departamentos");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -326,7 +339,7 @@ public class DeptosFRM extends javax.swing.JFrame {
         txtInq.setText(departamentosObj.getInquilino());
         txtPiso.setText(departamentosObj.getPiso().toString());
         txtLetra.setText(departamentosObj.getLetra());
-        
+        txtExpensas.setText(departamentosObj.getExpensas().toString());
         btnAccion.setText("Modificar");
         
         }
@@ -339,7 +352,7 @@ public class DeptosFRM extends javax.swing.JFrame {
         } else {
         DefaultTableModel modelo = (DefaultTableModel) tblListado1.getModel();
         Integer id = (Integer) modelo.getValueAt(filaNum, 0);
-        departamentosObj = new departamentos(id, null, null, null, null);
+        departamentosObj = new departamentos(id, null, null, null, null, null);
         
         Integer opc = JOptionPane.showConfirmDialog(null, "¿Está seguro?");
         if (opc == 0) {
@@ -361,8 +374,8 @@ public class DeptosFRM extends javax.swing.JFrame {
             String inquilino = txtInq.getText();
             Integer piso = Integer.parseInt(txtPiso.getText());
             String letra = txtLetra.getText();
-
-            departamentosObj = new departamentos(id, propietario, inquilino, piso, letra);
+            Double expensas = Double.parseDouble(txtExpensas.getText());
+            departamentosObj = new departamentos(id, propietario, inquilino, piso, letra, expensas);
             if (id == null) {
             DCtrl.insertar(departamentosObj);
             JOptionPane.showMessageDialog(null, "Departamento registrado con éxito!");
@@ -424,6 +437,7 @@ public class DeptosFRM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -439,6 +453,7 @@ public class DeptosFRM extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiModificar;
     private javax.swing.JLabel lblID;
     private javax.swing.JTable tblListado1;
+    private javax.swing.JTextField txtExpensas;
     private javax.swing.JTextField txtInq;
     private javax.swing.JTextField txtLetra;
     private javax.swing.JTextField txtPiso;

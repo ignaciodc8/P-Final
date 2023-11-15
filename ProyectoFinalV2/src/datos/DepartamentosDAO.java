@@ -28,7 +28,7 @@ public class DepartamentosDAO implements IDAO{
             ps = con.prepareStatement(SSQL);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
-                 departamentosObj = new departamentos(rs.getInt("id_depto"), rs.getString("propietario"), rs.getString("inquilino"), rs.getInt("piso"), rs.getString("letra"));
+                 departamentosObj = new departamentos(rs.getInt("id_depto"), rs.getString("propietario"), rs.getString("inquilino"), rs.getInt("piso"), rs.getString("letra"), rs.getDouble("expensas"));
             
             lista.add(departamentosObj);}
             return lista;
@@ -42,14 +42,14 @@ public class DepartamentosDAO implements IDAO{
     public void insertar(Object obj) {
         try {
             departamentosObj = (departamentos) obj;
-            String SSQL = "INSERT INTO departamentos (propietario, inquilino, piso, letra) VALUES"
-                    + "(?, ?, ?, ?)";
+            String SSQL = "INSERT INTO departamentos (propietario, inquilino, piso, letra, expensas) VALUES"
+                    + "(?, ?, ?, ?, ?)";
             ps = con.prepareStatement(SSQL);
             ps.setString(1, departamentosObj.getPropietario());
             ps.setString(2, departamentosObj.getInquilino());
             ps.setInt(3, departamentosObj.getPiso());
             ps.setString(4, departamentosObj.getLetra());
-            
+            ps.setDouble(5, departamentosObj.getExpensas());
             
             
             
@@ -63,13 +63,14 @@ public class DepartamentosDAO implements IDAO{
     public void modificar(Object obj) {
         try {
             departamentosObj = (departamentos) obj;
-            String SSQL = "UPDATE departamentos SET propietario=?, inquilino=?, piso=?, letra=? WHERE id_depto=?";
+            String SSQL = "UPDATE departamentos SET propietario=?, inquilino=?, piso=?, letra=?, expensas=? WHERE id_depto=?";
             ps = con.prepareStatement(SSQL);
             ps.setString(1, departamentosObj.getPropietario());
             ps.setString(2, departamentosObj.getInquilino());
             ps.setInt(3, departamentosObj.getPiso());
             ps.setString(4, departamentosObj.getLetra());
-            ps.setInt(5, departamentosObj.getDeptoID());            
+            ps.setDouble(5, departamentosObj.getExpensas());
+            ps.setInt(6, departamentosObj.getDeptoID());            
             
             ps.executeUpdate();
             
