@@ -11,6 +11,7 @@ public class departamentos {
     private String letra;
     private Double expensas;
     
+    public departamentos(){}
     
     public departamentos(Integer deptoID, String propietario, String inquilino, Integer piso, String letra, Double expensas) {
         this.deptoID = deptoID;

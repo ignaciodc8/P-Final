@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.departamentos;
-import modelo.gastos;
+//import modelo.gastos;
 
 
 public class DepartamentosDAO implements IDAO{

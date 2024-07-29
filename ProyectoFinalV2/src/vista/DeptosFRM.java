@@ -188,7 +188,7 @@ public class DeptosFRM extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Depto", "Propietario", "Inquilino", "Piso", "Letra", "ID Gastos"
+                "ID Depto", "Propietario", "Inquilino", "Piso", "Letra", "Expensas"
             }
         ));
         jScrollPane4.setViewportView(tblListado1);
@@ -397,7 +397,7 @@ public class DeptosFRM extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Departamento registrado con éxito!");
             } else {
             DCtrl.modificar(departamentosObj);
-            JOptionPane.showMessageDialog(null, "Departamento modificado con exito.");
+            JOptionPane.showMessageDialog(null, "Departamento modificado con éxito.");
             
             }
             this.actualizar();

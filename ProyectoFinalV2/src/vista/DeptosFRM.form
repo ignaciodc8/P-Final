@@ -334,7 +334,7 @@
                         <Column editable="true" title="Inquilino" type="java.lang.Object"/>
                         <Column editable="true" title="Piso" type="java.lang.Object"/>
                         <Column editable="true" title="Letra" type="java.lang.Object"/>
-                        <Column editable="true" title="ID Gastos" type="java.lang.Object"/>
+                        <Column editable="true" title="Expensas" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

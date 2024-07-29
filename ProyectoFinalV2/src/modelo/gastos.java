@@ -8,7 +8,8 @@ public class gastos {
     private Double gastos;
     private String comentarios;
     
-
+    public gastos() {}
+    
     public gastos(Integer gastosID, Double gastos, String comentarios) {
         
         this.gastosID = gastosID;
