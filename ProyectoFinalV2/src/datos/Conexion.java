@@ -12,7 +12,7 @@ public class Conexion {
     private String db = "proyectofinal2"; 
     private String url = "jdbc:mysql://localhost:3306/" + db; // contiene la ruta de acceso a la base de datos
     private String user = "root";
-    private String pass = "1234";
+    private String pass = "";
     private String driver = "com.mysql.cj.jdbc.Driver"; 
     
     public Connection conectar() {
