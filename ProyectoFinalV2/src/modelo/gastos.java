@@ -2,7 +2,7 @@
 package modelo;
 
 
-public class gastos {
+public class gastos extends departamentos{
     
     private Integer gastosID;
     private Double gastos;
