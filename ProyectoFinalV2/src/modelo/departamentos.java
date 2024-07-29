@@ -1,8 +1,8 @@
 
 package modelo;
 
-//departamentos ahora es un clase abstracta y sirve como padre de otras clases
-public class departamentos  {
+
+public class departamentos {
 
     private Integer deptoID;
     private String propietario;
